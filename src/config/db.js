@@ -17,7 +17,7 @@ const connectDB = async () => {
     return cachedConnection;
   }
 
-  const uri = process.env.MONGODB_URI || process.env.MONGO_URI; // Support both
+  const uri = process.env.MONGODB_URI || process.env.MONGO_URI;
   if (!uri) throw new Error("MONGODB_URI or MONGO_URI missing in .env");
 
   // If connection is in progress, wait for it
@@ -38,7 +38,7 @@ const connectDB = async () => {
       serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
       socketTimeoutMS: 45000, // Close sockets after 45s of inactivity
     });
-    
+
     cachedConnection = connection;
     console.log("MongoDB Connected ✅");
     return connection;
